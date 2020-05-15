@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/sparrc/go-ping"
 	"fmt"
+	//"strconv"
 )
 
 func main() {
@@ -16,6 +17,8 @@ func main() {
 	pinger.OnRecv = func(pkt *ping.Packet) {
 		fmt.Printf("%d bytes from %s: icmp_seq=%d time=%v\n",
 			pkt.Nbytes, pkt.IPAddr, pkt.Seq, pkt.Rtt)
+		//f, _ := strconv.ParseFloat(pkt.Rtt.String(), 32)	
+		//fmt.Printf(pkt.Rtt.String())
 	}
 
 	pinger.OnFinish = func(stats *ping.Statistics) {
